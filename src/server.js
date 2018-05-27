@@ -140,6 +140,10 @@ controller.on(['direct_message', 'direct_mention', 'mention'], (bot, message) =>
   bot.reply(message, 'Huh?');
 });
 
+controller.on('outgoing_webhook', (bot, message) => {
+  bot.replyPublic(message, 'yeah yeah');
+});
+
 // enable/disable cross origin resource sharing if necessary
 app.use(cors());
 
