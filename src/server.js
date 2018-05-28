@@ -27,7 +27,7 @@ const slackbot = controller.spawn({
   if (err) { throw new Error(err); }
 });
 
-const yelpClient = yelp.client('U3rsBf4YsKO8RllPD1NyWkEbPItm3wHnR-pabUmTvO5vBQIasP1Up6Usx-3H_Ve6UqcZDjEtNq2xhxkhV_ofzogXbOkdSMpQ9_g5-As2duWZ00_kvll3WG-OeTsIW3Yx');
+const yelpClient = yelp.client(process.env.YELP_API_KEY);
 
 // prepare webhook
 // for now we won't use this but feel free to look up slack webhooks
@@ -92,7 +92,6 @@ controller.hears(['hungry', 'food', 'lunch', 'dinner'], ['direct_message', 'dire
         let count = 0;
         res.jsonBody.businesses.forEach((business) => {
           if (count < 5) {
-            console.log(business);
             const attachments = {
 
               attachments: [
